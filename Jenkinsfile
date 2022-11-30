@@ -1,15 +1,3 @@
-pipeline {
-  agent any
-  stages {
-    stage('version') {
-      steps {
-        bat cmd_exec('python --version')
-      }
-    }
-    stage('hello') {
-      steps {
-        bat 'python3 main.py'
-      }
-    }
-  }
+stage('build') {
+  bat "C:\ProgramData\Jenkins\.jenkins\workspace\ProyectoQuinela\correr.bat"
 }
