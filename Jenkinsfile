@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage('version') {
       steps {
-        sh 'python3 --version'
+        sh 'sudo python3 --version'
       }
     }
     stage('hello') {
       steps {
-        sh 'python3 main.py'
+        sh 'sudo python3 main.py'
       }
     }
   }
