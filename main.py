@@ -16,7 +16,7 @@ conexion = MySQL(app)
 #########################REGISTRAR LIGA ################################
 
 # Listar todos los usuarios dentro de la herramienta
-@app.route('/registrarliga/', methods = ['POST','GET'])
+@app.route('/registrarliga', methods = ['POST','GET'])
 def registra_liga():
     
     try:
@@ -34,7 +34,7 @@ def registra_liga():
 
 ######################Invitar#############################
 
-@app.route('/Invitar/', methods = ['POST'])
+@app.route('/Invitar', methods = ['POST'])
 def registra_usuario_Invitado():
     try:
 
@@ -84,7 +84,7 @@ def registra_usuario_Invitado():
 
 ######################Obtener Equipos#############################
 
-@app.route('/registrarliga/obtenerequipos/', methods = ['GET'])
+@app.route('/registrarliga/obtenerequipos', methods = ['GET'])
 def listar_equipo():
     try:
         cursor = conexion.connection.cursor()
@@ -104,7 +104,7 @@ def pagina_no_encontrada(error):
     return "<h1> La pagina no existe <h1>",404
 
 ##########################Administrar Grupos################################
-@app.route('/registrar/grupo/', methods = ['POST','GET'])
+@app.route('/registrar/grupo', methods = ['POST','GET'])
 def registra_grupo():
     try:
         curso = leer_grupo(request.json['nombre'])
@@ -165,7 +165,7 @@ def pagina_no_encontrada(error):
 
 
 ######################REGISTRAR UN USUARIO################################
-@app.route('/registrar/', methods = ['POST'])
+@app.route('/registrar', methods = ['POST'])
 def registra_usuario():
     try:
        correo = '{0}'.format(request.json['correo'])
@@ -183,7 +183,7 @@ def registra_usuario():
         return jsonify({'mensaje': "ERROR 0003 <Usuario Ya creado o Falta de datos Json>"}) 
 
 ####################REGISTRAR UN EQUIPO#######################################
-@app.route('/registrar/equipo/', methods = ['POST','GET'])
+@app.route('/registrar/equipo', methods = ['POST','GET'])
 def registra_equipo():
     try:
         curso = leer_equipo(request.json['nombre'])
@@ -215,7 +215,7 @@ def leer_equipo(codigo):
         raise ex
 
 ##################RELACIÓN GRUPO EQUIPO########################
-@app.route('/registrar/relaciónequipo/', methods = ['POST','GET'])
+@app.route('/registrar/relaciónequipo', methods = ['POST','GET'])
 def relación_equipo():
     try:
         curso = leer_equipo1(request.json['equipo'])
@@ -270,7 +270,17 @@ def pagina_no_encontrada(error):
     return "<h1> La pagina no existe <h1>",404
 
 
+###########################DETENER EL SERVIDOR###############################
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
 
+@app.route('/shutdown', methods=['POST'])
+def shutdown():
+    shutdown_server()
+    return 'Server shutting down...'
 
 
 
