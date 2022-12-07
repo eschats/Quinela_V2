@@ -270,7 +270,7 @@ def pagina_no_encontrada(error):
     return "<h1> La pagina no existe <h1>",404
 
 
-###########################DETENER EL SERVIDOR###############################
+###########################DETENER EL SERVIDOR#################################
 def shutdown_server():
     func = request.environ.get('werkzeug.server.shutdown')
     if func is None:
