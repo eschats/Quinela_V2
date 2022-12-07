@@ -69,7 +69,7 @@ def test_equipo(app):
     assert response.status_code == 200
 
 
-  ###################################PRUEBA OBTENER RElACIÓN Y EQUIPO#######################################
+  ###################################PRUEBA OBTENER RElACIÓN Y EQUIPO##########################################
 def test_relacion_equipo(app):
     response = app.test_client().post('/registrar/relaciónequipo')
     assert response.status_code == 200
@@ -77,7 +77,7 @@ def test_relacion_equipo(app):
     assert response.status_code == 200
 
 
-  ###################################PRUEBA DETENER SERVIDOR#######################################
+  ###################################PRUEBA DETENER SERVIDOR###########################################3
 def test_apagar(app):
     response = app.test_client().post('/shutdown')
     assert response.status_code == 500
