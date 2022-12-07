@@ -15,7 +15,7 @@ def client(app):
     return app.test_client()
 
 
-######################################PRUEBA OBTENER EQUIPOS ####################################
+######################################PRUEBA OBTENER EQUIPOS #######################################
 def test_obtenerequipos(app):
     response = app.test_client().get('/registrarliga/obtenerequipos')
     assert response.status_code == 200
@@ -23,7 +23,7 @@ def test_obtenerequipos(app):
 
 
 
-###################################PRUEBA OBTENER LIGAS #######################################
+###################################PRUEBA OBTENER LIGAS ###########################################
 def test_obtenerligas(app):
     response = app.test_client().get('/registrarliga/ligas')
     assert response.status_code == 200
