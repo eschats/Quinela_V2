@@ -30,7 +30,7 @@ def test_obtenerligas(app):
   
   
 
-###################################PRUEBA OBTENER REGISTRAR LIGAS#######################################
+###################################PRUEBA OBTENER REGISTRAR LIGAS############################################
 def test_registrarliga(app):
     response = app.test_client().post('/registrarliga')
     assert response.status_code == 200
